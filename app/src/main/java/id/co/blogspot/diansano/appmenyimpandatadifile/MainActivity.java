@@ -15,6 +15,7 @@ import java.io.OutputStreamWriter;
 public class MainActivity extends AppCompatActivity {
     final int READ_BLOCK_SIZE = 100;
     EditText textBox;
+    String namaFile = "textfile.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickSave(View v) {
         String str = textBox.getText().toString();
+
         try {
-            FileOutputStream fOut = openFileOutput("textfile.txt", MODE_PRIVATE);
+            FileOutputStream fOut = openFileOutput(namaFile, MODE_PRIVATE);
 
             OutputStreamWriter osw = new OutputStreamWriter(fOut);
 
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickLoad(View v) {
         try {
-            FileInputStream fIn = openFileInput("textfile.txt");
+            FileInputStream fIn = openFileInput(namaFile);
             InputStreamReader isr = new InputStreamReader(fIn);
             char[] inputBuffer = new char[READ_BLOCK_SIZE];
             String s = "";
